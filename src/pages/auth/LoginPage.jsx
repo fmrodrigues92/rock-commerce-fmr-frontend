@@ -37,44 +37,93 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="container py-5" style={{ maxWidth: 480 }}>
-      <h1 className="h3 mb-4">Login</h1>
+    <div
+      className="min-vh-100 d-flex align-items-center"
+      style={{
+        background:
+          'linear-gradient(135deg, #f8f9fa 0%, #eef1f4 50%, #ffffff 100%)',
+      }}
+    >
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12 col-xl-5 col-lg-6 col-md-8 col-sm-10">
+            <div
+              className="card border-0 shadow-lg"
+              style={{ borderRadius: '22px', overflow: 'hidden' }}
+            >
+              <div className="card-body p-4 p-md-5">
+                <div className="text-center mb-4">
+                  <div
+                    className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
+                    style={{
+                      width: 64,
+                      height: 64,
+                      background: '#111827',
+                      color: '#fff',
+                      fontSize: 24,
+                      fontWeight: 700,
+                    }}
+                  >
+                    RC
+                  </div>
+                  <h1 className="h3 fw-bold mb-1">Entrar</h1>
+                  <p className="text-muted mb-0">
+                    Acesse sua conta para visualizar o catálogo.
+                  </p>
+                </div>
 
-      <form onSubmit={handleSubmit} className="card card-body shadow-sm">
-        {error && <div className="alert alert-danger">{error}</div>}
+                <form onSubmit={handleSubmit}>
+                  {error && <div className="alert alert-danger">{error}</div>}
 
-        <div className="mb-3">
-          <label className="form-label">E-mail</label>
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
+                  <div className="mb-3">
+                    <label className="form-label fw-semibold">E-mail</label>
+                    <input
+                      type="email"
+                      name="email"
+                      className="form-control form-control-lg"
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="voce@email.com"
+                      required
+                      style={{ borderRadius: 14 }}
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="form-label fw-semibold">Senha</label>
+                    <input
+                      type="password"
+                      name="password"
+                      className="form-control form-control-lg"
+                      value={form.password}
+                      onChange={handleChange}
+                      placeholder="Sua senha"
+                      required
+                      style={{ borderRadius: 14 }}
+                    />
+                  </div>
+
+                  <button
+                    className="btn btn-dark btn-lg w-100"
+                    type="submit"
+                    disabled={submitting}
+                    style={{ borderRadius: 14 }}
+                  >
+                    {submitting ? 'Entrando...' : 'Entrar'}
+                  </button>
+                </form>
+
+                <p className="text-center text-muted mt-4 mb-0">
+                  Ainda não tem conta?{' '}
+                  <Link to="/register" className="fw-semibold text-decoration-none">
+                    Cadastre-se
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div className="mb-3">
-          <label className="form-label">Senha</label>
-          <input
-            type="password"
-            name="password"
-            className="form-control"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <button className="btn btn-primary" type="submit" disabled={submitting}>
-          {submitting ? 'Entrando...' : 'Entrar'}
-        </button>
-
-        <p className="mt-3 mb-0 small">
-          Não tem conta? <Link to="/register">Cadastre-se</Link>
-        </p>
-      </form>
+      </div>
     </div>
   )
 }
