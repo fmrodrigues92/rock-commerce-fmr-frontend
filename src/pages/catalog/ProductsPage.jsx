@@ -9,7 +9,7 @@ export default function ProductsPage() {
   const [categories, setCategories] = useState([])
   const [meta, setMeta] = useState({
     current_page: 1,
-    per_page: 15,
+    per_page: 5,
     total: 0,
     last_page: 1,
   })
@@ -23,7 +23,7 @@ export default function ProductsPage() {
       search: searchParams.get('search') || '',
       category: searchParams.get('category') || '',
       page: Number(searchParams.get('page') || 1),
-      per_page: Number(searchParams.get('per_page') || 15),
+      per_page: Number(searchParams.get('per_page') || 5),
     }
   }, [searchParams])
 
@@ -74,7 +74,7 @@ export default function ProductsPage() {
       setMeta(
         response.data?.meta || {
           current_page: 1,
-          per_page: 15,
+          per_page: 5,
           total: 0,
           last_page: 1,
         },
